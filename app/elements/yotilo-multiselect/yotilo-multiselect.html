@@ -147,13 +147,13 @@
         </style>
         <div class="btn" on-tap="_open">
             <small>
-                Filter [[kind]]s
+                Filtrar [[kind]]s
             </small>
             <span>
                 [[_displayTitle(selected.*, options.*, kind)]]
             </span>
             <div id="select">
-                <div on-tap="_select" on-tap="_select" class$="[[_isSelected(selected, 0, selected.*)]]">No [[kind]]</div>
+                <div on-tap="_select" on-tap="_select" class$="[[_isSelected(selected, 0, selected.*)]]">[[_procNoKind(kind)]]</div>
                 <template is="dom-repeat" items="[[options]]" filter="{{_filter(helper)}}" as="filterasset" observe="helper" sort="_sort">
                     <div on-tap="_select" class$="[[_isSelected(selected, filterasset.id, selected.*)]]">[[filterasset.title]]</div>
                 </template>
@@ -194,6 +194,13 @@
 
         ready: function() {
 
+        },
+
+        _procNoKind: function(kind) {
+
+            if (kind == 'cliente') return 'Ningún ' + kind;
+            else if (kind == 'marca') return 'Ninguna ' + kind;
+            return 'No ' + kind;
         },
 
         _optionsChanged: function(optionsChange) {
@@ -274,6 +281,8 @@
                     return selectedCount + ' ' + kind + 's';
                 }
             } else {
+                if (kind == 'cliente') return 'Todos los ' + kind + 's';
+                else if (kind == 'marca') return 'Todas las ' + kind + 's';
                 return 'All ' + kind + 's';
             }
         },

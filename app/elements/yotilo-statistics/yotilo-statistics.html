@@ -175,10 +175,10 @@
 
             <header class="cf">
                 <button class$="[[_isActive('projects', toDisplay)]]" on-tap="_toggleKindProjects">
-                    Statistics for projects
+                    Estadísticas por cliente
                 </button>
                 <button class$="[[_isActive('tasks', toDisplay)]]" on-tap="_toggleKindTasks">
-                    Statistics for tasks
+                    Estadísticas por marca
                 </button>
             </header>
 
@@ -315,7 +315,7 @@
 
         _displayProject: function(id, projects){
 
-            var title = 'No Project';
+            var title = 'Ningún cliente';
             projects.forEach(function(val, key){
                 if( val.id == id) {
                     title = val.title;
@@ -327,7 +327,7 @@
 
         _displayTask: function(id, tasks){
 
-            var title = 'No Task';
+            var title = 'Ninguna marca';
             tasks.forEach(function(val, key){
                 if( val.id == id) {
                     title = val.title;

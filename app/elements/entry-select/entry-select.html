@@ -101,7 +101,7 @@
                 [[_displayProject(selected, options, kind, options.*)]]
             </span>
             <div id="select">
-                <div on-tap="_select">No [[kind]]</div>
+                <div on-tap="_select">[[_procNoKind(kind)]]</div>
                 <template is="dom-repeat" items="[[options]]" filter="_filter" observe="state" sort="_sort">
                     <div on-tap="_select">[[item.title]]</div>
                 </template>
@@ -141,6 +141,13 @@
             this.toggleClass('open', false, this.$.select);
         },
 
+        _procNoKind: function(kind) {
+
+            if (kind == 'cliente') return 'Ningún ' + kind;
+            else if (kind == 'marca') return 'Ninguna ' + kind;
+            return 'No ' + kind;
+        },
+
         _select: function(e) {
 
             if (e.model) {
@@ -171,7 +178,7 @@
             if (title) {
                 return title;
             } else {
-                return 'No ' + kind;
+                return this._procNoKind(kind);
             }
         },
 

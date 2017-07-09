@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Polymer Starter Kit">
-  <title>Yotilo · Free Timetracking · Open Source</title>
+  <title>OMG · Timesheet</title>
 
   <!-- Place favicon.ico in the `app/` directory -->
 
@@ -89,39 +89,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </iron-pages>
         </div>
 
-        <footer>
-          <nav>
-            <ul>
-              <li>
-                <a href="/">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="/howto">
-                  How to use Yotilo
-                </a>
-              </li>
-              <li>
-                <a href="/imprint">
-                  Imprint
-                </a>
-              </li>
-              <li>
-                <a href="/privacy">
-                  Privacy Policy
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </footer>
-
         <yotilo-overlay overlayid="projects">
-          <yotilo-assetlist asset="projects" data="{{projects}}" deleted="{{deletedProjects}}"></yotilo-assetlist>
+          <yotilo-assetlist asset="clientes" data="{{projects}}" deleted="{{deletedProjects}}"></yotilo-assetlist>
         </yotilo-overlay>
 
         <yotilo-overlay overlayid="tasks">
-          <yotilo-assetlist asset="tasks" data="{{tasks}}" deleted="{{deletedTasks}}"></yotilo-assetlist>
+          <yotilo-assetlist asset="marcas" data="{{tasks}}" deleted="{{deletedTasks}}"></yotilo-assetlist>
         </yotilo-overlay>
 
         <yotilo-overlay overlayid="welcome">

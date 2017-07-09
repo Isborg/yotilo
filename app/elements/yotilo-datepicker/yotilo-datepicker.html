@@ -114,14 +114,14 @@
         <iron-localstorage name="savedStartDate" value="{{savedStartDate}}" on-iron-localstorage-load-empty="_initSavedStartDate"></iron-localstorage>
         <div class="btn" on-tap="_open">
             <small>
-                Period of time
+                Filtrar tiempo
             </small>
             <span>
                 [[_displayPeriod(startDate, endDate)]]
             </span>
             <div id="select">
-                <yotilo-datepicker-month label="Start Date" start-date="{{startDate}}" end-date="{{endDate}}" choose-start-date></yotilo-datepicker-month>
-                <yotilo-datepicker-month label="End Date" start-date="{{startDate}}" end-date="{{endDate}}"></yotilo-datepicker-month>
+                <yotilo-datepicker-month label="Fecha Inicial" start-date="{{startDate}}" end-date="{{endDate}}" choose-start-date></yotilo-datepicker-month>
+                <yotilo-datepicker-month label="Fecha Final" start-date="{{startDate}}" end-date="{{endDate}}"></yotilo-datepicker-month>
             </div>
             <div class="shadow" on-tap="_close"></div>
         </div>

@@ -102,13 +102,13 @@
             </button>
         </header>
         <section>
-            <span>Sun</span>
-            <span>Mon</span>
-            <span>Tue</span>
-            <span>Wed</span>
-            <span>Thu</span>
-            <span>Fri</span>
-            <span>Sat</span>
+            <span>Dom</span>
+            <span>Lun</span>
+            <span>Mar</span>
+            <span>Mié</span>
+            <span>Jue</span>
+            <span>Vie</span>
+            <span>Sáb</span>
             <template is="dom-repeat" items="[[days]]">
                 <div data-test$="[[item]]" class$="[[_getClass(item, startDate, endDate)]]" on-tap="_setDate">
                     [[_displayDate(item)]]
@@ -211,7 +211,7 @@
         _displayMonth: function(monthToDisplay) {
 
             var dateTmp = new Date(monthToDisplay),
-                monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+                monthArray = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre']
             return monthArray[dateTmp.getMonth()] + ' ' + dateTmp.getFullYear();
         },
 

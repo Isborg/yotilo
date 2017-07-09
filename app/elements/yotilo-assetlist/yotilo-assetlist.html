@@ -86,7 +86,7 @@
         }
         
         div button + button {
-            right: 20rem;
+            right: 22rem;
         }
         
         div button:hover {
@@ -115,30 +115,30 @@
         <iron-localstorage name$="[[asset]]-deleted" value="{{deleted}}" on-iron-localstorage-load-empty="_initDeleted"></iron-localstorage>
         <header class="cf">
             <button class$="[[_classActive(0, toShow)]]" on-tap="_toggleArchivedTrue">
-                Active [[asset]] ([[_getActiveCount(data.*)]])
+                ([[_getActiveCount(data.*)]]) [[_procActiveAsset(asset)]]
             </button>
             <button class$="[[_classActive(1, toShow)]]" on-tap="_toggleArchivedFalse">
-                Archived [[asset]] ([[_getArchivedCount(data.*)]])
+                ([[_getArchivedCount(data.*)]]) [[_procArchivedAsset(asset)]]
             </button>
         </header>
         <template is="dom-if" if="[[toShow]]">
             <template is="dom-repeat" items="{{data}}" filter="_filter" observe="state" sort="_sort">
                 <div>
-                    <input type="text" value$="{{item.title}}" placeholder="No Name" on-blur="_save" on-keydown="_keydown">
+                    <input type="text" value$="{{item.title}}" placeholder="Sin nombre" on-blur="_save" on-keydown="_keydown">
                     <button on-tap="_archive">
-                        Archive Entry
+                        Archivar entrada
                     </button>
                 </div>
             </template>
             <template is="dom-if" if="[[_emptyActive(data.*)]]">
                 <section id="empty">
                     <p>
-                        No [[asset]] are added. Create one by clicking the button below.
+                        No se han agregado [[asset]].
                     </p>
                 </section>
             </template>
             <button class="new" on-tap="_newEntry">
-                Add Entry
+                Agregar
             </button>
         </template>
         <template is="dom-if" if="[[!toShow]]">
@@ -146,17 +146,17 @@
                 <div>
                     <input type="text" value$="{{item.title}}" placeholder="No Name" on-blur="_save" on-keydown="_keydown">
                     <button on-tap="_activate">
-                        Activate Entry
+                        Activar entrada
                     </button>
                     <button on-tap="_delete">
-                        Delete (with all time entries)
+                        Eliminar (completamente)
                     </button>
                 </div>
             </template>
             <template is="dom-if" if="[[_emptyArchived(data.*)]]">
                 <section id="empty-archived">
                     <p>
-                        No archived [[asset]].
+                        No existen [[_procArchivedAsset(asset)]].
                     </p>
                 </section>
             </template>
@@ -188,6 +188,20 @@
 
         ready: function() {
 
+        },
+
+        _procActiveAsset: function(asset) {
+
+            if (asset == 'clientes') return asset + ' activos';
+            else if (asset = 'marcas') return asset + ' activas';
+            return 'Active ' + asset;
+        },
+
+        _procArchivedAsset: function(asset) {
+
+            if (asset == 'clientes') return asset + ' archivados';
+            else if (asset = 'marcas') return asset + ' archivadas';
+            return 'Archived ' + asset;
         },
 
         _emptyActive: function(dataChange) {

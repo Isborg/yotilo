@@ -60,10 +60,10 @@
             <entry-duration duration="{{data.duration}}" stopwatch="{{data.stopwatch}}"></entry-duration>
         </div>
         <div class="col">
-            <entry-select kind="project" selected="{{data.project}}" options="[[projects]]"></entry-select>
+            <entry-select kind="cliente" selected="{{data.project}}" options="[[projects]]"></entry-select>
         </div>
         <div class="col">
-            <entry-select kind="task" selected="{{data.task}}" options="[[tasks]]"></entry-select>
+            <entry-select kind="marca" selected="{{data.task}}" options="[[tasks]]"></entry-select>
         </div>
         <div class="col big">
             <entry-comment value="{{data.comment}}"></entry-comment>
@@ -119,6 +119,8 @@
         },
 
         _selectOption: function(e) {
+            if (e.detail.kind == 'cliente') e.detail.kind = 'project';
+            else if (e.detail.kind = 'marca') e.detail.kind = 'task';
             this.set('data.' + e.detail.kind, e.detail.id);
         },
 

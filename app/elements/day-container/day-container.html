@@ -76,7 +76,7 @@
                 </template>
             </h3>
             <button on-tap="_newEntry">
-                Add Entry
+                Agregar entrada
             </button>
         </header>
         <template is="dom-repeat" initialCount="1" items="{{data}}" as="time" sort="_sort" filter="{{_filter(projectsSelected.*, tasksSelected.*)}}">
@@ -143,10 +143,10 @@
 
         _displayDay: function(day) {
             var dateTemp = new Date(day);
-            var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            var weekdayArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            var monthArray = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre'];
+            var weekdayArray = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 
-            return dateTemp.getDate() + '. ' + monthArray[dateTemp.getMonth()] + ', ' + weekdayArray[dateTemp.getDay()];
+            return weekdayArray[dateTemp.getDay()] + ' ' + dateTemp.getDate() + ' de ' + monthArray[dateTemp.getMonth()];
         },
 
         _displayTotal: function(total) {

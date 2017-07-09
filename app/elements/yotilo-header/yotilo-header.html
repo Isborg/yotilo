@@ -57,10 +57,10 @@
         </style>
         <div class="container cf">
             <div class="col">
-                <yotilo-multiselect kind="project" selected="{{projectsSelected}}" options="[[projects]]"></yotilo-multiselect>
+                <yotilo-multiselect kind="cliente" selected="{{projectsSelected}}" options="[[projects]]"></yotilo-multiselect>
             </div>
             <div class="col">
-                <yotilo-multiselect kind="task" selected="{{tasksSelected}}" options="[[tasks]]"></yotilo-multiselect>
+                <yotilo-multiselect kind="marca" selected="{{tasksSelected}}" options="[[tasks]]"></yotilo-multiselect>
             </div>
             <div class="col">
                 <yotilo-datepicker  start-date="{{startDate}}" end-date="{{endDate}}"></yotilo-datepicker>
@@ -70,12 +70,12 @@
                     <ul>
                         <li>
                             <a href="#" on-tap="_openProjectsOverlay">
-                                Projects
+                                Clientes
                             </a>
                         </li>
                         <li>
                             <a href="#" on-tap="_openTasksOverlay">
-                                Tasks
+                                Marcas
                             </a>
                         </li>
                     </ul>
