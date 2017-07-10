@@ -23,9 +23,11 @@
         }
         
         nav ul {
-            position: absolute;
+            position: relative;/*
+            position: absolute;*/
             top: 50%;
             margin: 0;
+            margin-top: 5rem;
             padding: 0;
             list-style: none;
             transform: translateY(-50%);
@@ -62,19 +64,35 @@
             <div class="col">
                 <yotilo-multiselect kind="marca" selected="{{tasksSelected}}" options="[[tasks]]"></yotilo-multiselect>
             </div>
-            <div class="col">
+            <div class="col" hidden>
                 <yotilo-datepicker  start-date="{{startDate}}" end-date="{{endDate}}"></yotilo-datepicker>
             </div>
             <div class="col">
                 <nav>
                     <ul>
                         <li>
-                            <a href="#" on-tap="_openProjectsOverlay">
+                            <a href="#" on-tap="_setPastWeek" onmouseover="this.style.color='#888'" onmouseout="this.style.color='#333'">
+                                Semana anterior
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" on-tap="_setNextWeek" onmouseover="this.style.color='#888'" onmouseout="this.style.color='#333'">
+                                Semana siguiente
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#" on-tap="_openProjectsOverlay" onmouseover="this.style.color='#888'" onmouseout="this.style.color='#333'">
                                 Clientes
                             </a>
                         </li>
                         <li>
-                            <a href="#" on-tap="_openTasksOverlay">
+                            <a href="#" on-tap="_openTasksOverlay" onmouseover="this.style.color='#888'" onmouseout="this.style.color='#333'">
                                 Marcas
                             </a>
                         </li>
@@ -117,6 +135,24 @@
 
         _openTasksOverlay: function() {
             this.fire('open-tasks-overlay', {});
+        },
+
+        _setCurrentWeek: function() {
+            const datepicker = Polymer.dom(this.root).querySelector('yotilo-datepicker');
+            if (datepicker) datepicker._setCurrentWeek();
+            return;
+        },
+
+        _setPastWeek: function() {
+            const datepicker = Polymer.dom(this.root).querySelector('yotilo-datepicker');
+            if (datepicker) datepicker._setPastWeek();
+            return;
+        },
+
+        _setNextWeek: function() {
+            const datepicker = Polymer.dom(this.root).querySelector('yotilo-datepicker');
+            if (datepicker) datepicker._setNextWeek();
+            return;
         }
     });
     </script>

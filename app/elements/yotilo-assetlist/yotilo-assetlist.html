@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-localstorage/iron-localstorage.html">
+<link rel="import" href="../asset-entry/asset-entry.html">
 <dom-module id="yotilo-assetlist">
     <template>
         <style>
@@ -123,12 +124,13 @@
         </header>
         <template is="dom-if" if="[[toShow]]">
             <template is="dom-repeat" items="{{data}}" filter="_filter" observe="state" sort="_sort">
-                <div>
+                <asset-entry list-data={{data}} item={{item}} name="{{item.title}}" asset="[[asset]]"></asset-entry>
+                <!--div>
                     <input type="text" value$="{{item.title}}" placeholder="Sin nombre" on-blur="_save" on-keydown="_keydown">
                     <button on-tap="_archive">
                         Archivar entrada
                     </button>
-                </div>
+                </div-->
             </template>
             <template is="dom-if" if="[[_emptyActive(data.*)]]">
                 <section id="empty">
@@ -143,7 +145,8 @@
         </template>
         <template is="dom-if" if="[[!toShow]]">
             <template is="dom-repeat" items="{{data}}" filter="_filterArchived" observe="state" sort="_sort">
-                <div>
+                <asset-entry list-data={{data}} item={{item}} name="{{item.title}}" asset="[[asset]]" is-archived></asset-entry>
+                <!--div>
                     <input type="text" value$="{{item.title}}" placeholder="No Name" on-blur="_save" on-keydown="_keydown">
                     <button on-tap="_activate">
                         Activar entrada
@@ -151,7 +154,7 @@
                     <button on-tap="_delete">
                         Eliminar (completamente)
                     </button>
-                </div>
+                </div-->
             </template>
             <template is="dom-if" if="[[_emptyArchived(data.*)]]">
                 <section id="empty-archived">

@@ -57,15 +57,28 @@
             return temp3;
         },
 
+        _nextDay: function(day) {
+            var temp2 = new Date(day + 86400000);
+            var temp3 = new Date(temp2.getFullYear(), temp2.getMonth(), temp2.getDate(), 0, 0, 0).getTime();
+            return temp3;
+        },
+
         _periodChanged: function(startDate, endDate) {
 
             this.set('days', []);
-
+            /*
             dateTemp = this.endDate;
             while (dateTemp >= startDate) {
 
                 this.push('days', dateTemp);
                 dateTemp = this._prevDay(dateTemp);
+            }*/
+
+            dateTemp = this.startDate;
+            while (dateTemp <= endDate) {
+
+                this.push('days', dateTemp);
+                dateTemp = this._nextDay(dateTemp);
             }
         },
     });

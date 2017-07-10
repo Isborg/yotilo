@@ -148,7 +148,9 @@
         ready: function() {
 
             var dateTemp = new Date();
+            this.startDate = new Date(dateTemp.getFullYear(), dateTemp.getMonth(), dateTemp.getDate(), 0, 0, 0).getTime();
             this.endDate = new Date(dateTemp.getFullYear(), dateTemp.getMonth(), dateTemp.getDate(), 0, 0, 0).getTime();
+            this._setCurrentWeek();
         },
 
         _open: function() {
@@ -158,6 +160,44 @@
         _close: function(e) {
             e.stopPropagation();
             this.toggleClass('open', false, this.$.select);
+        },
+
+        _setCurrentWeek: function() {
+
+            var tmpStart = new Date(this.startDate);
+
+            // 86400000 milliseconds in a day
+            tmpStart = this.startDate - tmpStart.getDay() * 86400000;
+            var tmpEnd = tmpStart + 6 * 86400000;
+
+            this.startDate = tmpStart;
+            this.endDate = tmpEnd;
+        },
+
+        _setPastWeek: function(e) {
+
+            var tmpStart = new Date(this.startDate);
+
+            // 86400000 milliseconds in a day
+            tmpStart = this.startDate - tmpStart.getDay() * 86400000;
+            tmpStart = tmpStart - 7 * 86400000;
+            var tmpEnd = tmpStart + 6 * 86400000;
+
+            this.startDate = tmpStart;
+            this.endDate = tmpEnd;
+        },
+
+        _setNextWeek: function(e) {
+
+            var tmpStart = new Date(this.startDate);
+
+            // 86400000 milliseconds in a day
+            tmpStart = this.startDate - tmpStart.getDay() * 86400000;
+            tmpStart = tmpStart + 7 * 86400000;
+            var tmpEnd = tmpStart + 6 * 86400000;
+
+            this.startDate = tmpStart;
+            this.endDate = tmpEnd;
         },
 
         _displayPeriod: function(startDate, endDate) {
